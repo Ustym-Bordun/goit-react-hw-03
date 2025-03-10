@@ -1,9 +1,83 @@
-import css from "./ContactForm.module.css";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-const ContactForm = () => {
+import { nanoid } from 'nanoid';
+
+const formSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, 'Too Short !')
+    .max(50, 'Too Long !')
+    .required('Required !'),
+  number: Yup.string()
+    .matches(/[0-9,-]/, 'Incorrect number !')
+    .min(7, 'Too Short !')
+    .max(50, 'Too Long !')
+    .required('Required !'),
+});
+
+import css from './ContactForm.module.css';
+
+const initialValues = { name: '', number: '' };
+
+const ContactForm = ({ onAddContact }) => {
+  const formId = nanoid();
   return (
     <>
-      <p>ContactForm</p>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, actions) => {
+          onAddContact({
+            id: nanoid(6),
+            name: values.name,
+            number: values.number,
+          });
+
+          actions.resetForm();
+        }}
+        validationSchema={formSchema}
+      >
+        <Form className={css.form}>
+          <div className={css.inputsPart}>
+            <div className={css.wrapper}>
+              <label className={css.label} htmlFor={`name-${formId}`}>
+                Name
+              </label>
+              <Field
+                className={css.input}
+                type="text"
+                name="name"
+                id={`name-${formId}`}
+              />
+              <ErrorMessage
+                className={css.validation}
+                name="name"
+                component="span"
+              />
+            </div>
+
+            <div className={css.wrapper}>
+              <label className={css.label} htmlFor={`number-${formId}`}>
+                Number
+              </label>
+              <Field
+                className={css.input}
+                type="text"
+                name="number"
+                id={`number-${formId}`}
+              />
+              <ErrorMessage
+                className={css.validation}
+                name="number"
+                component="span"
+              />
+            </div>
+          </div>
+
+          <button className={css.btn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
     </>
   );
 };
