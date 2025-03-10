@@ -1,12 +1,14 @@
-# React + Vite
+# GoIT React Homework 03
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Цей проєкт є третім домашнім завданням для курсу React, створеним за допомогою Vite. Він містить розширений функціонал для роботи з компонентами, станом та побічними ефектами в React.
 
-Currently, two official plugins are available:
+### Основні можливості:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Використання useState для керування станом компонентів
+- Робота з useEffect для обробки побічних ефектів
+- Додавання можливості збереження даних у локальному сховищі (localStorage)
+- Компонентний підхід у React
+- Покращені стилі для зручності користувача
+- Використання сучасних інструментів розробки
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Переглянути можна за посиланням: [GoIT React HW-03](https://goit-react-hw-03-pi-umber.vercel.app/)
